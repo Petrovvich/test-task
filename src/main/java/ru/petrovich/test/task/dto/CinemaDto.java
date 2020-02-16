@@ -12,7 +12,7 @@ import java.util.Collection;
  */
 @Data
 @NoArgsConstructor
-public class CinemaDto {
+public class CinemaDto implements BaseDto {
     private Long id;
     private Instant created;
     private String name;

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public class RequisitesDto {
+public class RequisitesDto implements BaseDto {
     private Long id;
     private Long inn;
     private Long kpp;

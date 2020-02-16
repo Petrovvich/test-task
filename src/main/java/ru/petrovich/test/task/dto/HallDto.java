@@ -11,7 +11,7 @@ import java.util.Collection;
  */
 @Data
 @NoArgsConstructor
-public class HallDto {
+public class HallDto implements BaseDto {
     private Long id;
     private Collection<SeatDto> seats;
     private Long capacity;

@@ -10,7 +10,7 @@ import ru.petrovich.test.task.model.SeatType;
  */
 @Data
 @NoArgsConstructor
-public class SeatDto {
+public class SeatDto implements BaseDto {
     private Long id;
     private SeatType type;
     private Long row;

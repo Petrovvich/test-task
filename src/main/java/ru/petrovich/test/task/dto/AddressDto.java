@@ -4,14 +4,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 /**
  * Dto объект для сущности {@link ru.petrovich.test.task.model.Address}
  */
 @Data
 @NoArgsConstructor
-public class AddressDto implements Serializable {
+public class AddressDto implements BaseDto {
     private Long id;
     private String legalAddress;
     private String actualAddress;
