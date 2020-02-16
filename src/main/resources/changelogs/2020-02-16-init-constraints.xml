@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="1" author="alexromantrue@gmail.com" context="schema">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="cinema_address_id_fk"
+                                            foreignKeyTableName="cinema" schemaName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create foreign key for column address_id in table Cinema</comment>
+        <addForeignKeyConstraint baseTableCatalogName="cinema" referencedTableCatalogName="cinema"
+                                 baseColumnNames="address_id" baseTableName="cinema"
+                                 constraintName="cinema_address_id_fk"
+                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="address"/>
+    </changeSet>
+    <changeSet id="2" author="alexromantrue@gmail.com" context="schema">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="cinema_requisites_id_fk"
+                                            foreignKeyTableName="cinema" schemaName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create foreign key for column requisites_id in table Cinema</comment>
+        <addForeignKeyConstraint baseTableCatalogName="cinema" referencedTableCatalogName="cinema"
+                                 baseColumnNames="requisites_id" baseTableName="cinema"
+                                 constraintName="cinema_requisites_id_fk"
+                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="requisites"/>
+    </changeSet>
+    <changeSet id="3" author="alexromantrue@gmail.com" context="schema">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="hall_cinema_id_fk"
+                                            foreignKeyTableName="hall" schemaName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create foreign key for column cinema_id in table Hall</comment>
+        <addForeignKeyConstraint baseTableCatalogName="cinema" referencedTableCatalogName="cinema"
+                                 baseColumnNames="cinema_id" baseTableName="hall"
+                                 constraintName="hall_cinema_id_fk"
+                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="cinema"/>
+    </changeSet>
+    <changeSet id="4" author="alexromantrue@gmail.com" context="schema">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="seat_hall_id_fk"
+                                            foreignKeyTableName="seat" schemaName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create foreign key for column hall_id in table Seat</comment>
+        <addForeignKeyConstraint baseTableCatalogName="cinema" referencedTableCatalogName="cinema"
+                                 baseColumnNames="hall_id" baseTableName="seat"
+                                 constraintName="seat_hall_id_fk"
+                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="hall"/>
+    </changeSet>
+</databaseChangeLog>

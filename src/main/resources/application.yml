@@ -1,7 +1,7 @@
 ---
 micronaut:
   application:
-    name: ru-petrovich-test-task
+    name: cinema-application
 
 ---
 datasources.default: {}
@@ -13,15 +13,20 @@ micronaut:
 ---
 datasources:
   default:
-    url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ''
-    dialect: H2
+    url: 'jdbc:postgresql://localhost:5432/cinema'
+    driverClassName: org.postgresql.Driver
+    username: cinema
+    password: 'gjitkYF[eq'
+    dialect: org.hibernate.dialect.PostgreSQL10Dialect
 jpa:
   default:
     properties:
       hibernate:
+        physical_naming_strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
         hbm2ddl:
-          auto: update
-
+          auto: create-drop
+        show_sql: true
+liquibase:
+  datasources:
+    default:
+      change-log: 'classpath:changelogs/changelog.xml'

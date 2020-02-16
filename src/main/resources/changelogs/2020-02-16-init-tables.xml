@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="1" author="alexromantrue@gmail.com" context="schema">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <tableExists tableName="cinema" catalogName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create table Cinema</comment>
+        <createTable tableName="cinema" catalogName="cinema">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="address_id" type="bigint"/>
+            <column name="requisites_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="alexromantrue@gmail.com" context="schema">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <tableExists tableName="hall" catalogName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create table Hall</comment>
+        <createTable tableName="hall" catalogName="cinema">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cinema_id" type="bigint"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="capacity" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="alexromantrue@gmail.com" context="schema">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <tableExists tableName="seat" catalogName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create table Seat</comment>
+        <createTable tableName="seat" catalogName="cinema">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="hall_id" type="bigint"/>
+            <column name="type" type="varchar(255)"/>
+            <column name="row" type="bigint"/>
+            <column name="number" type="bigint"/>
+            <column name="vacant" type="boolean" valueBoolean="true"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="alexromantrue@gmail.com" context="schema">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <tableExists tableName="requisites" catalogName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create table Requisites</comment>
+        <createTable tableName="requisites" catalogName="cinema">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="inn" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="kpp" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="full_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pfr_reg_number" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ogrn" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_code" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="okved" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ocato" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="5" author="alexromantrue@gmail.com" context="schema">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <tableExists tableName="address" catalogName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create table Address</comment>
+        <createTable tableName="address" catalogName="cinema">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="legal_address" type="varchar(255)"/>
+            <column name="actual_address" type="varchar(255)"/>
+            <column name="postal_address" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
