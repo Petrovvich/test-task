@@ -1,10 +1,7 @@
 package ru.petrovich.test.task.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -18,6 +15,7 @@ import java.util.Collection;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"halls"})
 public class Cinema {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,

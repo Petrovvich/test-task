@@ -22,10 +22,9 @@ jpa:
   default:
     properties:
       hibernate:
-        physical_naming_strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
+        physical_naming_strategy: "io.micronaut.data.hibernate.naming.DefaultPhysicalNamingStrategy"
         hbm2ddl:
-          auto: create-drop
-        show_sql: true
+          auto: validate
 liquibase:
   datasources:
     default:

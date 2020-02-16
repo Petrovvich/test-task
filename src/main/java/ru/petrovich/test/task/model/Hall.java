@@ -1,10 +1,7 @@
 package ru.petrovich.test.task.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -17,6 +14,7 @@ import java.util.Collection;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"seats"})
 public class Hall {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
@@ -29,7 +27,7 @@ public class Hall {
     /**
      * Внешний ключ на {@link Cinema}
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cinema_id")
     private Cinema cinema;
     /**

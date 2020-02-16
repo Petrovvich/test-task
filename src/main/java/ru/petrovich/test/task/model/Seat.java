@@ -1,9 +1,7 @@
 package ru.petrovich.test.task.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -15,6 +13,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"hall"})
 public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
@@ -27,7 +26,8 @@ public class Seat {
     /**
      * Внешний ключ на {@link Hall}
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "hall_id")
     private Hall hall;
     /**
