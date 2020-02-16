@@ -1,8 +1,7 @@
 package ru.petrovich.test.task.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
@@ -10,13 +9,19 @@ import java.io.Serializable;
 /**
  * Dto объект для сущности {@link ru.petrovich.test.task.model.Address}
  */
-@Getter
-@Builder
+@Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class AddressDto implements Serializable {
     private Long id;
     private String legalAddress;
     private String actualAddress;
     private String postalAddress;
+
+    @Builder
+    public AddressDto(Long id, String legalAddress, String actualAddress, String postalAddress) {
+        this.id = id;
+        this.legalAddress = legalAddress;
+        this.actualAddress = actualAddress;
+        this.postalAddress = postalAddress;
+    }
 }

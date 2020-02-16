@@ -1,17 +1,14 @@
 package ru.petrovich.test.task.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
  * Dto объект для сущности {@link ru.petrovich.test.task.model.Requisites}
  */
-@Getter
-@Builder
+@Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class RequisitesDto {
     private Long id;
     private Long inn;
@@ -22,4 +19,18 @@ public class RequisitesDto {
     private String categoryCode;
     private Long okved;
     private Long ocato;
+
+    @Builder
+    public RequisitesDto(Long id, Long inn, Long kpp, String fullName, Long pfrRegNumber, Long ogrn,
+                         String categoryCode, Long okved, Long ocato) {
+        this.id = id;
+        this.inn = inn;
+        this.kpp = kpp;
+        this.fullName = fullName;
+        this.pfrRegNumber = pfrRegNumber;
+        this.ogrn = ogrn;
+        this.categoryCode = categoryCode;
+        this.okved = okved;
+        this.ocato = ocato;
+    }
 }

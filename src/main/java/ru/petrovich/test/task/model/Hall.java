@@ -1,7 +1,10 @@
 package ru.petrovich.test.task.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -11,6 +14,9 @@ import java.util.Collection;
  */
 @Data
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Hall {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
