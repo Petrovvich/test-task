@@ -1,4 +1,4 @@
-package ru.petrovich.test.task.controller;
+package ru.petrovich.test.task.error.handlers;
 
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.http.HttpRequest;
@@ -11,6 +11,7 @@ import javax.inject.Singleton;
 
 import static ru.petrovich.test.task.wrapper.ResponseWrapper.error;
 
+
 /**
  * Глобальный хэндлер ошибок для api
  */
@@ -18,11 +19,11 @@ import static ru.petrovich.test.task.wrapper.ResponseWrapper.error;
 @Produces
 @Singleton
 @Requires(classes = {Throwable.class})
-public class RestExceptionHandler implements ExceptionHandler<Throwable, HttpResponse> {
+public class GlobalExceptionHandler implements ExceptionHandler<Throwable, HttpResponse> {
 
     @Override
     public HttpResponse handle(HttpRequest request, Throwable exception) {
         log.error("Exception occurred while process request ", exception);
-        return HttpResponse.ok(error(exception.getMessage()));
+        return HttpResponse.serverError(error(exception.getMessage()));
     }
 }

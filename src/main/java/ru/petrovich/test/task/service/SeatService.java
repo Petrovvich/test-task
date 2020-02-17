@@ -3,6 +3,7 @@ package ru.petrovich.test.task.service;
 import lombok.extern.slf4j.Slf4j;
 import ru.petrovich.test.task.dto.ResponseDto;
 import ru.petrovich.test.task.error.SeatAlreadyReservedException;
+import ru.petrovich.test.task.error.SeatNotFoundException;
 import ru.petrovich.test.task.mappers.SeatMapper;
 import ru.petrovich.test.task.model.Seat;
 import ru.petrovich.test.task.repository.SeatRepository;
@@ -16,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static ru.petrovich.test.task.wrapper.ResponseWrapper.notFound;
 import static ru.petrovich.test.task.wrapper.ResponseWrapper.success;
 
 /**
@@ -34,12 +34,12 @@ public class SeatService {
      * @param hallId идентификатор зала
      * @return количество забронированных мест
      */
-    public ResponseDto getAllByHall(Long hallId) {
+    public ResponseDto getAllByHall(Long hallId) throws SeatNotFoundException {
         log.debug("getAllByHall(): start handling request with id {}", hallId);
         List<Seat> found = seatRepository.getAllByHall(hallId);
         if (found == null || found.size() == 0) {
             log.warn("getAllByHall(): nothing found for id {}", hallId);
-            return notFound();
+            throw new SeatNotFoundException(hallId);
         }
         return success(found.stream().map(SeatMapper.INSTANCE::map).collect(Collectors.toList()), "Found");
     }
@@ -50,12 +50,12 @@ public class SeatService {
      * @param hallId идентификатор зала
      * @return количество забронированных мест
      */
-    public ResponseDto getVacantByHall(Long hallId) {
+    public ResponseDto getVacantByHall(Long hallId) throws SeatNotFoundException {
         log.debug("getVacantByHall(): start handling request with id {}", hallId);
         List<Seat> count = seatRepository.getCountVacantByHallId(hallId);
         if (count == null || count.size() == 0) {
             log.warn("getVacantByHall(): nothing found for id {}", hallId);
-            return notFound();
+            throw new SeatNotFoundException(hallId);
         }
         return success(count.stream().map(SeatMapper.INSTANCE::map).collect(Collectors.toList()), "Found");
     }
@@ -66,12 +66,12 @@ public class SeatService {
      * @param hallId идентификатор зала
      * @return количество забронированных мест
      */
-    public ResponseDto getReservedByHall(Long hallId) {
+    public ResponseDto getReservedByHall(Long hallId) throws SeatNotFoundException {
         log.debug("getReservedByHall(): start handling request with id {}", hallId);
         List<Seat> count = seatRepository.getCountReservedByHallId(hallId);
         if (count == null || count.size() == 0) {
             log.warn("getReservedByHall(): nothing found for id {}", hallId);
-            return notFound();
+            throw new SeatNotFoundException(hallId);
         }
         return success(count.stream().map(SeatMapper.INSTANCE::map).collect(Collectors.toList()), "Found");
     }
@@ -90,11 +90,11 @@ public class SeatService {
         for (Long id : seatIds) {
             try {
                 setVacant(id, isReserve);
-                reserveResult.put(id, false);
+                reserveResult.put(id, true);
                 log.trace("reserveSeats(): successfully reserved seat with id {}", id);
             } catch (Exception e) {
                 log.error("Exception occurred when reserve seat with id {}", id, e);
-                reserveResult.put(id, true);
+                reserveResult.put(id, false);
             }
         }
         return success(reserveResult, "Successfully reserved");

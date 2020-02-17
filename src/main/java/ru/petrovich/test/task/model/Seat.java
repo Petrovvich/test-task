@@ -34,15 +34,15 @@ public class Seat {
      * @see SeatType
      */
     @Enumerated(EnumType.STRING)
-    private SeatType type;
+    private SeatType seatType;
     /**
      * Номер ряда посадочного места
      */
-    private Long row;
+    private Long seatRow;
     /**
      * Номер посадочного места в ряде
      */
-    private Long number;
+    private Long seatNumber;
     /**
      * Свободно ли посадочное место
      */

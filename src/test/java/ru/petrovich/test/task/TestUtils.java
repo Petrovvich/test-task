@@ -48,10 +48,10 @@ public class TestUtils {
     public static Seat buildEmptySeat() {
         return Seat.builder()
                 .id(1L)
-                .number(12L)
-                .row(1L)
+                .seatNumber(12L)
+                .seatRow(1L)
                 .vacant(true)
-                .type(SeatType.SIMPLE)
+                .seatType(SeatType.SIMPLE)
                 .build();
     }
 }

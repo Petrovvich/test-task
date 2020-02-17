@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static ru.petrovich.test.task.TestUtils.buildEmptySeat;
 
-@MicronautTest(packages = {"ru.petrovich.test.task.mappers"})
+@MicronautTest(propertySources = "classpath:application-test.yml")
 public class SeatMapperTest {
     private static Seat source;
 
@@ -24,9 +24,9 @@ public class SeatMapperTest {
         SeatDto target = SeatMapper.INSTANCE.map(source);
         assertNotNull(target);
         assertEquals(source.getId(), target.getId());
-        assertEquals(source.getNumber(), target.getNumber());
-        assertEquals(source.getRow(), target.getRow());
-        assertEquals(source.getType(), target.getType());
+        assertEquals(source.getSeatNumber(), target.getNumber());
+        assertEquals(source.getSeatRow(), target.getRow());
+        assertEquals(source.getSeatType(), target.getType());
         assertEquals(source.getVacant(), target.getVacant());
     }
 }

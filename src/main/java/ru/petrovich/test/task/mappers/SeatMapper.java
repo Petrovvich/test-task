@@ -1,6 +1,8 @@
 package ru.petrovich.test.task.mappers;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 import ru.petrovich.test.task.dto.SeatDto;
 import ru.petrovich.test.task.model.Seat;
@@ -13,5 +15,10 @@ public interface SeatMapper {
 
     SeatMapper INSTANCE = Mappers.getMapper(SeatMapper.class);
 
+    @Mappings({
+            @Mapping(source = "seatType", target = "type"),
+            @Mapping(source = "seatRow", target = "row"),
+            @Mapping(source = "seatNumber", target = "number")
+    })
     SeatDto map(Seat source);
 }

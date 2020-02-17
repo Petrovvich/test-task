@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static ru.petrovich.test.task.TestUtils.buildEmptyAddress;
 
-@MicronautTest(packages = {"ru.petrovich.test.task.mappers"})
+@MicronautTest(propertySources = "classpath:application-test.yml")
 public class AddressMapperTest {
     private static Address source;
 

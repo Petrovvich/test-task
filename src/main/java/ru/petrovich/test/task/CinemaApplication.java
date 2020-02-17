@@ -1,14 +1,17 @@
 package ru.petrovich.test.task;
 
 import io.micronaut.runtime.Micronaut;
-import io.swagger.v3.oas.annotations.*;
-import io.swagger.v3.oas.annotations.info.*;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
 
 @OpenAPIDefinition(
-    info = @Info(
-            title = "ru-petrovich-test-task",
-            version = "0.0"
-    )
+        info = @Info(
+                title = "Cinema application",
+                version = "0.1",
+                description = "Application for reserve seats in cinema",
+                contact = @Contact(url = "https://github.com/Petrovvich", name = "Alexander Romanyuk", email = "alexromantrue@gmail.com")
+        )
 )
 public class CinemaApplication {
 

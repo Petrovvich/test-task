@@ -1,6 +1,5 @@
 package ru.petrovich.test.task.mappers;
 
-import io.micronaut.context.annotation.Context;
 import io.micronaut.test.annotation.MicronautTest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static ru.petrovich.test.task.TestUtils.buildEmptyCinema;
 
-@MicronautTest(packages = {"ru.petrovich.test.task.mappers"})
+@MicronautTest(propertySources = "classpath:application-test.yml")
 public class CinemaMapperTest {
     private static Cinema source;
 

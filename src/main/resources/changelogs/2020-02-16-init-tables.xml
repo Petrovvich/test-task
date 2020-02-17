@@ -51,9 +51,9 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="hall_id" type="bigint"/>
-            <column name="type" type="varchar(255)"/>
-            <column name="row" type="bigint"/>
-            <column name="number" type="bigint"/>
+            <column name="seat_type" type="varchar(255)"/>
+            <column name="seat_row" type="bigint"/>
+            <column name="seat_number" type="bigint"/>
             <column name="vacant" type="boolean" valueBoolean="true"/>
         </createTable>
     </changeSet>
