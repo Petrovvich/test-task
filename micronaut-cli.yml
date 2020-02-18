@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: ru.petrovich.test.task
+---
+testFramework: junit
+sourceLanguage: java

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="1" author="alexromantrue@gmail.com" context="schema" failOnError="false">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <sequenceExists sequenceName="address_id_sequence" catalogName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create sequence for column id in table address</comment>
+        <createSequence sequenceName="address_id_sequence" minValue="0" maxValue="9223372036854775807"
+                        startValue="1" incrementBy="1" catalogName="cinema"/>
+    </changeSet>
+
+    <changeSet id="2" author="alexromantrue@gmail.com" context="schema" failOnError="false">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <sequenceExists sequenceName="cinema_id_sequence" catalogName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create sequence for column id in table address</comment>
+        <createSequence sequenceName="cinema_id_sequence" minValue="0" maxValue="9223372036854775807"
+                        startValue="1" incrementBy="1" catalogName="cinema"/>
+    </changeSet>
+
+    <changeSet id="3" author="alexromantrue@gmail.com" context="schema" failOnError="false">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <sequenceExists sequenceName="hall_id_sequence" catalogName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create sequence for column id in table address</comment>
+        <createSequence sequenceName="hall_id_sequence" minValue="0" maxValue="9223372036854775807"
+                        startValue="1" incrementBy="1" catalogName="cinema"/>
+    </changeSet>
+
+    <changeSet id="4" author="alexromantrue@gmail.com" context="schema" failOnError="false">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <sequenceExists sequenceName="requisites_id_sequence" catalogName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create sequence for column id in table address</comment>
+        <createSequence sequenceName="requisites_id_sequence" minValue="0" maxValue="9223372036854775807"
+                        startValue="1" incrementBy="1" catalogName="cinema"/>
+    </changeSet>
+
+    <changeSet id="5" author="alexromantrue@gmail.com" context="schema" failOnError="false">
+        <preConditions onFail="MARK_RAN" onError="CONTINUE">
+            <not>
+                <sequenceExists sequenceName="seat_id_sequence" catalogName="cinema"/>
+            </not>
+        </preConditions>
+        <comment>Create sequence for column id in table address</comment>
+        <createSequence sequenceName="seat_id_sequence" minValue="0" maxValue="9223372036854775807"
+                        startValue="1" incrementBy="1" catalogName="cinema"/>
+    </changeSet>
+</databaseChangeLog>

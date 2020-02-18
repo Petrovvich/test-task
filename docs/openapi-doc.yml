@@ -1,0 +1,145 @@
+openapi: 3.0.1
+info:
+  title: Cinema application
+  description: Application for reserve seats in cinema
+  contact:
+    name: Alexander Romanyuk
+    url: https://github.com/Petrovvich
+    email: alexromantrue@gmail.com
+  version: "0.1"
+paths:
+  /seats/{hallId}:
+    get:
+      tags:
+        - Seats
+      summary: Получение списка всех посадочных мест в зале по идентификатору зала
+      operationId: getAll
+      parameters:
+        - name: hallId
+          in: path
+          required: true
+          description: Идентификатор зала
+          example: 14
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Найден список мест в зале кинотеатра
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDto'
+        default:
+          description: Ответ по умолчанию
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDto'
+  /seats/vacant/count/{hallId}:
+    get:
+      tags:
+        - Seats
+      summary: Получение списка свободных посадочных мест в зале по идентификатору зала
+      operationId: getCountVacant
+      parameters:
+        - name: hallId
+          in: path
+          required: true
+          description: Идентификатор зала
+          example: 14
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Найден список свободных мест в зале кинотеатра
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDto'
+        default:
+          description: Ответ по умолчанию
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDto'
+  /seats/reserve/count/{hallId}:
+    get:
+      tags:
+        - Seats
+      summary: Получение списка забронированных посадочных мест в зале по идентификатору зала
+      operationId: getCountReserve
+      parameters:
+        - name: hallId
+          in: path
+          required: true
+          description: Идентификатор зала
+          example: 14
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Найден список забронированных мест в зале кинотеатра
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDto'
+        default:
+          description: Ответ по умолчанию
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDto'
+  /seats/reserve/{reserve}:
+    put:
+      tags:
+        - Seats
+      summary: Бронирование одного или нескольких посадочных мест
+      operationId: reserveSeats
+      parameters:
+        - name: reserve
+          in: path
+          required: true
+          description: Флаг указывающий на бронирование или отмену бронирования
+          example: 14
+          schema:
+            type: boolean
+      requestBody:
+        description: Список идентификаторов посадочных мест
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+        required: true
+      responses:
+        200:
+          description: Место успешно забронировано
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDto'
+        default:
+          description: Ответ по умолчанию
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDto'
+
+components:
+  schemas:
+    ResponseDto:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        data:
+          type: object
+      title: Ответ api с результатом операции
+      example: {"status": "SUCCESS", "message": "Found", "data": [{"id": 1, "type": "VIP", "row": 1, "numbeer": 1, vacant: false}]}

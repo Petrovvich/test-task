@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  cinema-db:
+    build:
+      context: ./automation/db/
+      cache_from:
+        - test-task_cinema-db
+      args:
+        POSTGRES_USER: ${POSTGRES_USER}
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - "/opt/cinema-db:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 6s
+      retries: 10
+  cinema-app:
+    build:
+      context: .
+      cache_from:
+        - test-task_cinema-app
+    ports:
+    - "8080:8080"
+    healthcheck:
+      test: "curl http://localhost:8080/actuator/health"
+      timeout: 3s
+      retries: 40
+    depends_on:
+      - cinema-db
