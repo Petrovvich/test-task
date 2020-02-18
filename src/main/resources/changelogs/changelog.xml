@@ -7,4 +7,5 @@
     <include file="changelogs/2020-02-16-init-tables.xml"/>
     <include file="changelogs/2020-02-16-init-sequences.xml"/>
     <include file="changelogs/2020-02-16-init-constraints.xml"/>
+    <include file="changelogs/2020-02-17-test_data.sql"/>
 </databaseChangeLog>

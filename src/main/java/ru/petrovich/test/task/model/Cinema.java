@@ -33,15 +33,17 @@ public class Cinema {
      * Название кинотеатра
      */
     private String name;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
+    /**
+     * @see Address
+     */
+    @JsonIgnore
+    @OneToOne(mappedBy = "cinema", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Address address;
     /**
      * @see Requisites
      */
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "requisites_id")
+    @JsonIgnore
+    @OneToOne(mappedBy = "cinema", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Requisites requisites;
     /**
      * @see Hall

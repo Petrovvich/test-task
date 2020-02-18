@@ -5,6 +5,6 @@ package ru.petrovich.test.task.error;
  */
 public class SeatNotFoundException extends Exception {
     public SeatNotFoundException(Long id) {
-        super(String.join(" ", "Seat with id", String.valueOf(id), "not found in database"));
+        super(String.join(" ", "Nothing found for hall with id", String.valueOf(id)));
     }
 }

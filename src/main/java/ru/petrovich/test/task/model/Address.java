@@ -24,8 +24,8 @@ public class Address {
             allocationSize = 1)
     private Long id;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "address")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cinema_id")
     private Cinema cinema;
     /**
      * Юридический адрес кинотеатра

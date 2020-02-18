@@ -7,30 +7,30 @@
     <changeSet id="1" author="alexromantrue@gmail.com" context="schema">
         <preConditions onFail="MARK_RAN" onError="CONTINUE">
             <not>
-                <foreignKeyConstraintExists foreignKeyName="cinema_address_id_fk"
-                                            foreignKeyTableName="cinema" schemaName="cinema"/>
+                <foreignKeyConstraintExists foreignKeyName="address_cinema_id_fk"
+                                            foreignKeyTableName="address" schemaName="cinema"/>
             </not>
         </preConditions>
-        <comment>Create foreign key for column address_id in table Cinema</comment>
+        <comment>Create foreign key for column cinema_id in table address</comment>
         <addForeignKeyConstraint baseTableCatalogName="cinema" referencedTableCatalogName="cinema"
-                                 baseColumnNames="address_id" baseTableName="cinema"
-                                 constraintName="cinema_address_id_fk"
+                                 baseColumnNames="cinema_id" baseTableName="address"
+                                 constraintName="address_cinema_id_fk"
                                  deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
-                                 referencedColumnNames="id" referencedTableName="address"/>
+                                 referencedColumnNames="id" referencedTableName="cinema"/>
     </changeSet>
     <changeSet id="2" author="alexromantrue@gmail.com" context="schema">
         <preConditions onFail="MARK_RAN" onError="CONTINUE">
             <not>
-                <foreignKeyConstraintExists foreignKeyName="cinema_requisites_id_fk"
+                <foreignKeyConstraintExists foreignKeyName="requisites_cinema_id_fk"
                                             foreignKeyTableName="cinema" schemaName="cinema"/>
             </not>
         </preConditions>
-        <comment>Create foreign key for column requisites_id in table Cinema</comment>
+        <comment>Create foreign key for column cinema_id in table requisites</comment>
         <addForeignKeyConstraint baseTableCatalogName="cinema" referencedTableCatalogName="cinema"
-                                 baseColumnNames="requisites_id" baseTableName="cinema"
-                                 constraintName="cinema_requisites_id_fk"
+                                 baseColumnNames="cinema_id" baseTableName="requisites"
+                                 constraintName="requisites_cinema_id_fk"
                                  deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
-                                 referencedColumnNames="id" referencedTableName="requisites"/>
+                                 referencedColumnNames="id" referencedTableName="cinema"/>
     </changeSet>
     <changeSet id="3" author="alexromantrue@gmail.com" context="schema">
         <preConditions onFail="MARK_RAN" onError="CONTINUE">
@@ -39,7 +39,7 @@
                                             foreignKeyTableName="hall" schemaName="cinema"/>
             </not>
         </preConditions>
-        <comment>Create foreign key for column cinema_id in table Hall</comment>
+        <comment>Create foreign key for column cinema_id in table hall</comment>
         <addForeignKeyConstraint baseTableCatalogName="cinema" referencedTableCatalogName="cinema"
                                  baseColumnNames="cinema_id" baseTableName="hall"
                                  constraintName="hall_cinema_id_fk"
@@ -53,7 +53,7 @@
                                             foreignKeyTableName="seat" schemaName="cinema"/>
             </not>
         </preConditions>
-        <comment>Create foreign key for column hall_id in table Seat</comment>
+        <comment>Create foreign key for column hall_id in table seat</comment>
         <addForeignKeyConstraint baseTableCatalogName="cinema" referencedTableCatalogName="cinema"
                                  baseColumnNames="hall_id" baseTableName="seat"
                                  constraintName="seat_hall_id_fk"

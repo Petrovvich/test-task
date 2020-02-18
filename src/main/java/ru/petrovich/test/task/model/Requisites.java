@@ -24,8 +24,8 @@ public class Requisites {
             , allocationSize = 1)
     private Long id;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "requisites")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cinema_id")
     private Cinema cinema;
     /**
      * ИНН юридического лица владеющего кинотеатром

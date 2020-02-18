@@ -29,18 +29,6 @@ public class SeatController {
         return HttpResponse.ok(seatService.getAllByHall(hallId));
     }
 
-    @Get("/vacant/count/{hallId}")
-    public HttpResponse<ResponseDto> getCountVacant(Long hallId) throws SeatNotFoundException {
-        log.debug("SeatController getCountVacant() start handling request with hall id {}", hallId);
-        return HttpResponse.ok(seatService.getVacantByHall(hallId));
-    }
-
-    @Get("/reserve/count/{hallId}")
-    public HttpResponse<ResponseDto> getCountReserve(Long hallId) throws SeatNotFoundException {
-        log.debug("SeatController getCountReserve() start handling request with hall id {}", hallId);
-        return HttpResponse.ok(seatService.getReservedByHall(hallId));
-    }
-
     @Put("/reserve/{reserve}")
     public HttpResponse<ResponseDto> reserveSeats(@Body Collection<Long> seatIds, Boolean reserve) {
         log.debug("SeatController reserveSeats() start handling request");
