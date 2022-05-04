@@ -1,10 +1,9 @@
 package ru.petrovich.test.task.service;
 
-import io.micronaut.test.annotation.MicronautTest;
+import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
+import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
 import ru.petrovich.test.task.error.SeatNotFoundException;
-
-import javax.inject.Inject;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

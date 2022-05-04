@@ -9,7 +9,7 @@ import ru.petrovich.test.task.mappers.SeatMapper;
 import ru.petrovich.test.task.model.Seat;
 import ru.petrovich.test.task.repository.SeatRepository;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.HashMap;

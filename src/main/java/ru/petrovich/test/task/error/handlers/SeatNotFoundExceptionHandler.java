@@ -8,7 +8,7 @@ import io.micronaut.http.server.exceptions.ExceptionHandler;
 import lombok.extern.slf4j.Slf4j;
 import ru.petrovich.test.task.error.SeatNotFoundException;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 import static ru.petrovich.test.task.wrapper.ResponseWrapper.error;
 
